@@ -8,7 +8,7 @@ namespace Week1
 {
     public class Week1
     {
-        public void Main(string[] args)
+        public static void Main(string[] args)
 
             //Official Microsoft
         {
