@@ -61,7 +61,7 @@ namespace Week1
             char upperA = 'A';
 
             int lowerAValue = (int)lowerA;
-            Console.WriteLine($"Intger value of lower-case a: {lowerA}");
+            Console.WriteLine($"Intger value of lower-case a: {lowerAValue}");
 
             //strings: Arrays of characters
 
@@ -70,7 +70,16 @@ namespace Week1
             //convert to character array
             char[] helloWorldCharArray = helloWorld.ToCharArray();
 
+            Console.Write("Enter your name: "); // Console.Write will not create a new line (same as pressing Enter in notepad).
 
+            // We will declare a string  variable called "name" and assign the user input to the string.
+
+            string name = Console.ReadLine(); // This will create the string variable "name" and then await Keyboard input
+
+            // After taking in the user input from the keyboard, We will print back to the  what the user typed
+
+            Console.WriteLine($"Your name is {name}.");
+            Console.ReadKey(); // Keep console window open until key is pressed to end program and close console window.
         }
     }
 }
