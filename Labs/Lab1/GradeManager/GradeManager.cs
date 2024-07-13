@@ -21,10 +21,14 @@ namespace GradeManager
 
             //Create some students
 
-            Student student1 = new Student("Josh", "Montana");
+            Student student1 = new Student("Tavish", "Misra");
+            Student student2 = new Student("Jibreel", "Muhammad");
+            Student student3 = new Student("Hassan", "Fofana");
+            Student student4 = new Student("Jarvis", "Potter");
+            Student student1 = new Student("Greg", "Leeker");
 
 
-            while(!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
+            while (!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
             {
                 menu();
             }
