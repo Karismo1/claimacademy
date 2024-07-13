@@ -18,6 +18,12 @@ namespace GradeManager
             Console.WriteLine(applicationName);//print application on first line
             Console.WriteLine(new String('-', applicationName.Length));
             Console.WriteLine('\n');//Create 2 blank line to start menu. WriteLine method call does the first blank line, \n prints the second
+
+            //Create some students
+
+            Student student1 = new Student("Josh", "Montana");
+
+
             while(!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
             {
                 menu();
