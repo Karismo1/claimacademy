@@ -10,7 +10,10 @@ namespace GradeManager
     {
         public static void Main(string[] args)
         {
+            string applicationName = "Grade Manager";//Declare the name of application as a string
 
+            Console.WriteLine(applicationName);//print application on first line
+            Console.WriteLine(new String('-', applicationName.Length));
         }
     }
 }
