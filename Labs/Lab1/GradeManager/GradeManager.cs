@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GradeManager
 {
-    public class Program
+    public class GradeManager
     {
         private static readonly string applicationName = "Grade Manager";//Declare application name as a string, make global and readonly as this value will not change
         private static bool exit = false; // create a boolean(True/false value)
@@ -108,8 +108,8 @@ namespace GradeManager
 
         private static void Exit()
         {
-            Console.WriteLine("Exit is called");
             Console.WriteLine("Good Bye!");
+            Console.ReadKey();
             exit = true; //Set exit to true so application will exit.
         }
     }
