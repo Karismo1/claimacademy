@@ -50,7 +50,7 @@ namespace GradeManager
                     break;
                 case 7:
                     //EditStudentGrade();
-                default://execute default case
+                default://execute default case, if choice does not match any of the cases. We add no code and just break statement which will end the switch block.
                     break;
             }
         }
