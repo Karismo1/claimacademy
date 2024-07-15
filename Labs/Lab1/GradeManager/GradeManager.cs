@@ -32,12 +32,6 @@ namespace GradeManager
             };// Create list of students and instantiate (create) the students from the start
               //We call the new keyword on each student object in the list because each student object must be created
 
-            Student student1 = new Student("Tavish", "Misra");
-            Student student2 = new Student("Jibreel", "Muhammad");
-            Student student3 = new Student("Hassan", "Fofana");
-            Student student4 = new Student("Jarvis", "Potter");
-            Student student5 = new Student("Greg", "Leeker");
-
 
             while (!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
             {
