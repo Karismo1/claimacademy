@@ -53,7 +53,7 @@ namespace GradeManager
             return _lastName;
         }
 
-        public void AddGrade(int grade)
+        public void AddGrade(int grade) //Void method as list's built-in Add method doesnt require a new list to be returned
         {
             _grades.Add(grade);
         }

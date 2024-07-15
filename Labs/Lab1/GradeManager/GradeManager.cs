@@ -19,13 +19,24 @@ namespace GradeManager
             Console.WriteLine(new String('-', applicationName.Length));
             Console.WriteLine('\n');//Create 2 blank line to start menu. WriteLine method call does the first blank line, \n prints the second
 
-            //Create some students
+            //Create some students/ Refactoring to list (change)
+
+            var students = new List<Student>()
+            {
+                new Student("Tavish", "Misra"), // Student 0 (student number as an index in the list
+                new Student("Jibreel", "Muhammad"), // Student 1
+                new Student("Hassan", "Fofana"), // Student 2
+                new Student("Jarvis", "Potter"), // Student 3
+                new Student("Greg", "Leeker") // Student 4
+
+            };// Create list of students and instantiate (create) the students from the start
+              //We call the new keyword on each student object in the list because each student object must be created
 
             Student student1 = new Student("Tavish", "Misra");
             Student student2 = new Student("Jibreel", "Muhammad");
             Student student3 = new Student("Hassan", "Fofana");
             Student student4 = new Student("Jarvis", "Potter");
-            Student student1 = new Student("Greg", "Leeker");
+            Student student5 = new Student("Greg", "Leeker");
 
 
             while (!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
