@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +23,7 @@ namespace GradeManager
 
             //Create some students/ Refactoring to list (change)
 
-            var students = new List<Student>()
+            var students = new List<Student>() //
             {
                 new Student("Tavish", "Misra"), // Student 0 (student number as an index in the list
                 new Student("Jibreel", "Muhammad"), // Student 1
@@ -32,14 +34,13 @@ namespace GradeManager
             };// Create list of students and instantiate (create) the students from the start
               //We call the new keyword on each student object in the list because each student object must be created
 
-
             while (!exit) // Keep menu running after each choice untill application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean
             {
-                menu();
+                menu(students);
             }
             
         }
-        private static void menu() 
+        private static void menu(List<Student> students) 
         {
             Console.WriteLine("1. Print all student grades.");
             Console.WriteLine("2. Add student grade.");
@@ -58,10 +59,10 @@ namespace GradeManager
             switch (choice)
             {
                 case 1:
-                    PrintStudentGrade(); //Call PrintStudentGrades method for 1rst choice.
+                    PrintStudentGrade(students); //Call PrintStudentGrades method for 1rst choice.
                     break;//Each case must end with break statement, otherwise all cases will execute
                 case 2:
-                    AddStudentGrade();
+                    AddStudentGrade(students);
                     break;
                 case 3:
                     CalculateClassAverage();
@@ -86,14 +87,82 @@ namespace GradeManager
             }
         }
 
-        private static void PrintStudentGrade()
+        private static void PrintStudentGrade(List<Student> students)
         {
-            Console.WriteLine("PrintStudentGrade is called");
+            string header = "Student Name        Grade";
+            Console.WriteLine(header);
+            Console.WriteLine(new string('-', header.Length));// Create a new string of dashes
+
+            if (students != null && students.Count > 0) // || means "or". && means "and"
+            {
+                //Print the student grades
+                foreach (var student in students)
+                {
+                    var studentFirstName = student.getFirstName();// Get first name
+                    var studentLastName = student.getLastName();//Get last name
+                    var studentGradeList = student.GetGrades();//Get the student grade list
+
+                    //Print the grades as is they exist, if not say no grades
+                    Console.WriteLine(string.Empty);
+
+                    if (studentGradeList != null && studentGradeList.Count > 0) 
+                    {
+                        foreach (var grade in studentGradeList)
+                        {
+                            Console.WriteLine($"{studentFirstName} {studentLastName}        {grade}");
+                        }
+                    }
+
+                    else 
+                    {
+                        Console.WriteLine($"{studentFirstName} {studentLastName}        No Grade");
+                    }
+             
+                }
+            }
+
+            else 
+            {
+                Console.WriteLine("There are no students");
+            }
+            
+            
         }
 
-        private static void AddStudentGrade()
+        private static void AddStudentGrade(List<Student> students)
         {
-            Console.WriteLine("AddStudentGrade is called");
+            //Check for students to add grades for
+
+            if (students != null && students.Count > 0) 
+            {
+                Console.WriteLine("\nWhich student do you want to add a grade for?\n\n");
+
+                int studentListNumber = 1; // to list students
+
+                foreach (var student in students)
+                {
+                    var studentFirstName = student.getFirstName();
+                    var studentLastName = student.getLastName();
+                    Console.WriteLine($"{studentListNumber}. {studentFirstName} {studentLastName}");
+                    studentListNumber++;//Increase list number by 1 for each student listed
+                }
+
+                string studentChoiceInput = Console.ReadLine(); // Waiting for input
+                int studentChoice = int.Parse(studentChoiceInput);
+
+                //Add the grade for the student. BAsed on the student choice, we must selct the right
+
+                int studentChoice--; //Decrement by 1 for the student list index #
+
+                string studentFirstChoiceName = students[studentChoice].getFirstName();//acess student from list. Format listVariableNAme[indexNumber]
+                string studentLastName = students[studentChoice].getLastName();
+
+                Console.Write($"Entet grade for student {studentFirstChoiceName} {studentLastName}: ")
+
+            else
+            {
+                Console.WriteLine("There are no students in the system.");
+            }
         }
 
         private static void CalculateClassAverage()
