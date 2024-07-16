@@ -133,7 +133,7 @@ namespace GradeManager
         {
             //Check for students to add grades for
 
-            if (students != null && students.Count > 0) 
+            if (students != null && students.Count > 0)
             {
                 Console.WriteLine("\nWhich student do you want to add a grade for?\n\n");
 
@@ -152,13 +152,19 @@ namespace GradeManager
 
                 //Add the grade for the student. BAsed on the student choice, we must selct the right
 
-                int studentChoice--; //Decrement by 1 for the student list index #
+                studentChoice--; //Decrement by 1 for the student list index #
 
-                string studentFirstChoiceName = students[studentChoice].getFirstName();//acess student from list. Format listVariableNAme[indexNumber]
-                string studentLastName = students[studentChoice].getLastName();
+                string studentChoiceFirstName = students[studentChoice].getFirstName();//acess student from list. Format listVariableNAme[indexNumber]
+                string studentChoiceLastName = students[studentChoice].getLastName();
 
-                Console.Write($"Entet grade for student {studentFirstChoiceName} {studentLastName}: ")
+                Console.Write($"Entet grade for student {studentChoiceFirstName} {studentChoiceLastName}: ");
+                string gradeInput = Console.ReadLine();
+                int grade = int.Parse(gradeInput);
 
+                //Add the grade to student gradelist
+                students[studentChoice].AddGrade(grade);
+
+            }
             else
             {
                 Console.WriteLine("There are no students in the system.");
