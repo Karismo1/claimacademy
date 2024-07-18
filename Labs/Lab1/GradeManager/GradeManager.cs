@@ -95,7 +95,7 @@ namespace GradeManager
 
             if (students != null && students.Count > 0) // || means "or". && means "and"
             {
-                //Print the student grades
+                //Print the student grades+
                 foreach (var student in students)
                 {
                     var studentFirstName = student.getFirstName();// Get first name
