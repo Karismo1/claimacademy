@@ -13,6 +13,7 @@ namespace GradeManager
     {
         private static readonly string applicationName = "Grade Manager"; //Declare application name as a string, make global and readonly as this value will not change.
         private static bool exit = false; // Create a boolean (true or false value, see Week 1 code under Booleans) called "exit", set to false by default as we want application to continue to run until we want to exit
+        private static List<Student> students;
         public static void Main(string[] args)
         {
 
@@ -21,7 +22,7 @@ namespace GradeManager
             Console.WriteLine('\n'); // Create 2 blank lines to start menu. WriteLine method call does first blank line, extra '\n' (newline character) creates second blank line (like hitting Enter twice on a keyboard).
 
             // Create some students
-            var students = new List<Student>()
+            students = new List<Student>()
             {
                 new Student("Tavish", "Misra"), // Student 0 (student number is index (position) number in the List)
                 new Student("Jibreel", "Muhammad"), //Student 1
@@ -33,13 +34,13 @@ namespace GradeManager
 
             while (!exit) // Keep menu running after each choice until application is exited. !exit checks for false (! is not operator, checks for opposite of what the current boolean value is), exit checks for true
             {
-                Menu(students);
+                Menu();
             }
         }
 
         // Methods for features. We can make these private rather than public because we are not calling these methods outside of this class.
 
-        private static void Menu(List<Student> students)
+        private static void Menu()
         {
             Console.WriteLine("1. Save all students to file.");
             Console.WriteLine("2. Load all students from file.");
@@ -63,19 +64,19 @@ namespace GradeManager
             switch (choice)
             {
                 case 1:
-                    SaveStudents(students);
+                    SaveStudents();
                     break;
                 case 2:
                     students = LoadStudents(); //Loaded students from file will be returned via LoadStudents method and assigned to students variable.
                     break;
                 case 3:
-                    PrintStudentGrades(students); // Call PrintStudentGrades method for 1st choice.
+                    PrintStudentGrades(); // Call PrintStudentGrades method for 1st choice.
                     break; //Each case must end with break statement, otherwise all cases will execute.
                 case 4:
-                    AddStudentGrade(students);
+                    AddStudentGrade();
                     break;
                 case 5:
-                    CalculateClassAverage(students);
+                    CalculateClassAverage();
                     break;
                 case 6:
                     PrintHighestGrade();
@@ -97,7 +98,7 @@ namespace GradeManager
             }
         }
 
-        private static void SaveStudents(List<Student> students)
+        private static void SaveStudents()
         {
             // Serialize the students List object to a string using Newtonsoft.Json. The resulting string will be JSON Text.
             var studentsJson = JsonConvert.SerializeObject(students, Formatting.Indented);
@@ -116,7 +117,7 @@ namespace GradeManager
             return students; // Sent student list back out to main application.
         }
 
-        private static void PrintStudentGrades(List<Student> students)
+        private static void PrintStudentGrades()
         {
             string header = "Student Name        Grade";
             Console.WriteLine(header);
@@ -157,7 +158,7 @@ namespace GradeManager
 
         }
 
-        private static void AddStudentGrade(List<Student> students)
+        private static void AddStudentGrade()
         {
             // Check for students to add grades for
 
@@ -198,7 +199,7 @@ namespace GradeManager
             }
         }
 
-        private static void CalculateClassAverage(List<Student> students)
+        private static void CalculateClassAverage()
         {
             // Take each student grade and average them all out.
 
