@@ -44,60 +44,76 @@ namespace GradeManager
 
         private static void Menu()
         {
-            Console.WriteLine("1. Print all student grades.");
-            Console.WriteLine("2. Add student grade.");
-            Console.WriteLine("3. Calculate Class Average");
-            Console.WriteLine("4. Print highest grade");
-            Console.WriteLine("5. Print lowest grade");
-            Console.WriteLine("6. Delete Student");
-            Console.WriteLine("7. Edit student grade");
-            Console.WriteLine("8. Save all students to file.");
-            Console.WriteLine("9. Load all students from file.");
-            Console.WriteLine("10. Exit");
-            Console.WriteLine("\n"); //Line break
-            Console.Write("Enter a choice (number): "); //See User Input code from Week 1
-
-            string choiceInput = Console.ReadLine(); //Keyboard input is always a string
-            int choice = int.Parse(choiceInput); //We use int's (Integer) Parse method to convert the string into an integer. If you don't enter an integer, program will crash without exception handling which we will cover later.
-
-            // Menu choices in a Console application are usually driven by a switch-case code block
-            // See https://www.w3schools.com/cs/cs_switch.php or https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
-
-            switch (choice)
+            try
+            // For exception handling. The code in the try block will "try" to execute without fatal errors (errors that cause exceptions).
+            // Fatal errors are errors which crash the application (not necessarily logical errors i.e. an error in coding which creates a behavior that is unexpected).
+            // Fatal errors throw exceptions because the application does not have a path forward to continue running given the condition that caused the fatal error.
+            // So we need to "handle" the exception, handling the fatal error in a way in which the application will not crash when the error occurs.
+            // When the exception is handled, code in the "catch" block below is executed, as that code in the block serves as a path forward to continue running the application.
+            // This code handles a FormatException. If we try to enter a choice that is not a numeric character that can be parsed to an integer (such as a letter),
+            // the catch block contains code which prints "Invalid input, try again" to prompt the user again to enter a numeric input in lieu of the application crashing.
             {
-                case 1:
-                    PrintStudentGrades(); // Call PrintStudentGrades method for 1st choice.
-                    break; //Each case must end with break statement, otherwise all cases will execute.
-                case 2:
-                    AddStudentGrade();
-                    break;
-                case 3:
-                    CalculateClassAverage();
-                    break;
-                case 4:
-                    PrintHighestGrade();
-                    break;
-                case 5:
-                    PrintLowestGrade();
-                    break;
-                case 6:
-                    DeleteStudent();
-                    break;
-                case 7:
-                    EditStudentGrade();
-                    break;
-                case 8:
-                    SaveStudents();
-                    break;
-                case 9:
-                    LoadStudents(); //Loaded students from file will be returned via LoadStudents method and assigned to students variable.
-                    break;
-                case 10:
-                    Exit();
-                    break;
-                default: //Execute default case, if choice does not match any of the cases. We add no code and just put break statement which will end the switch block.
-                    break;
+                Console.WriteLine("1. Print all student grades.");
+                Console.WriteLine("2. Add student grade.");
+                Console.WriteLine("3. Calculate Class Average");
+                Console.WriteLine("4. Print highest grade");
+                Console.WriteLine("5. Print lowest grade");
+                Console.WriteLine("6. Delete Student");
+                Console.WriteLine("7. Edit student grade");
+                Console.WriteLine("8. Save all students to file.");
+                Console.WriteLine("9. Load all students from file.");
+                Console.WriteLine("10. Exit");
+                Console.WriteLine("\n"); //Line break
+                Console.Write("Enter a choice (number): "); //See User Input code from Week 1
+
+                string choiceInput = Console.ReadLine(); //Keyboard input is always a string
+                int choice = int.Parse(choiceInput); //We use int's (Integer) Parse method to convert the string into an integer. If you don't enter an integer, program will crash without exception handling which we will cover later.
+
+                // Menu choices in a Console application are usually driven by a switch-case code block
+                // See https://www.w3schools.com/cs/cs_switch.php or https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
+
+                switch (choice)
+                {
+                    case 1:
+                        PrintStudentGrades(); // Call PrintStudentGrades method for 1st choice.
+                        break; //Each case must end with break statement, otherwise all cases will execute.
+                    case 2:
+                        AddStudentGrade();
+                        break;
+                    case 3:
+                        CalculateClassAverage();
+                        break;
+                    case 4:
+                        PrintHighestGrade();
+                        break;
+                    case 5:
+                        PrintLowestGrade();
+                        break;
+                    case 6:
+                        DeleteStudent();
+                        break;
+                    case 7:
+                        EditStudentGrade();
+                        break;
+                    case 8:
+                        SaveStudents();
+                        break;
+                    case 9:
+                        LoadStudents(); //Loaded students from file will be returned via LoadStudents method and assigned to students variable.
+                        break;
+                    case 10:
+                        Exit();
+                        break;
+                    default: //Execute default case, if choice does not match any of the cases. We add no code and just put break statement which will end the switch block.
+                        break;
+                }
             }
+            catch (FormatException)
+            {
+                Console.WriteLine("\nInvalid input, Try again\n");
+            }
+
+            
         }
 
         private static void SaveStudents()
