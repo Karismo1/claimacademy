@@ -67,7 +67,7 @@ namespace GradeManager
                     SaveStudents();
                     break;
                 case 2:
-                    students = LoadStudents(); //Loaded students from file will be returned via LoadStudents method and assigned to students variable.
+                    LoadStudents(); //Loaded students from file will be returned via LoadStudents method and assigned to students variable.
                     break;
                 case 3:
                     PrintStudentGrades(); // Call PrintStudentGrades method for 1st choice.
@@ -106,15 +106,17 @@ namespace GradeManager
             //Write the JSON string to a file
             var path = "C:\\Users\\hfofa\\Documents\\grademanagerstudent.json"; //Double \\ to escape \ for character in string
             File.WriteAllText(path, studentsJson);
+            Console.WriteLine($"\nStudens saved to {path}");
         }
 
-        private static List<Student> LoadStudents()
+        private static void LoadStudents()
         {
-            List<Student> students = null; // Create empty student list to load from file
+            //List<Student> students = null; // Create empty student list to load from file
             var path = "C:\\Users\\hfofa\\Documents\\grademanagerstudent.json"; // File path
             var json = File.ReadAllText(path); // Load JSON text from file
             students = JsonConvert.DeserializeObject<List<Student>>(json); // Convert JSON text back to object
-            return students; // Sent student list back out to main application.
+            //return students; // Sent student list back out to main application.
+            Console.WriteLine($"\nStudens loaded from file: {path}");
         }
 
         private static void PrintStudentGrades()
@@ -238,12 +240,42 @@ namespace GradeManager
 
         private static void PrintHighestGrade()
         {
-            Console.WriteLine("PrintHighestGrade method is called.");
+            int maxGrade = 0; //Create a variable called maxgrade to holf the current max grade as we loop through all the grades
+            int count = 0; //If 0, then we ae starting from the beginning
+            foreach (var student in students)
+            {
+                foreach (var grade in student.Grades)
+                {
+                    if (count == 0 || grade > maxGrade)//If we are starting or the max grade is greater than max grade than assign the new highest grade to max grade
+                    {
+                        maxGrade = grade;
+                    }
+                    
+                    count++;// Increment count outsode of if because we want to increment this regardless of the case
+                }
+            }
+
+            Console.WriteLine($"\nThe highest grade is {maxGrade}\n.");
         }
 
         private static void PrintLowestGrade()
         {
-            Console.WriteLine("PrintLowestGrade method is called.");
+            int minGrade = 0; //Create a variable called mingrade to holf the current min grade as we loop through all the grades
+            int count = 0; //If 0, then we ae starting from the beginning
+            foreach (var student in students)
+            {
+                foreach (var grade in student.Grades)
+                {
+                    if (count == 0 || grade < minGrade)//If we are starting or the min grade is greater than min grade than assign the new lowest grade to max grade
+                    {
+                        minGrade = grade;
+                    }
+
+                    count++;// Increment count outsode of if because we want to increment this regardless of the case
+                }
+            }
+
+            Console.WriteLine($"\nThe highest grade is {minGrade}\n.");
         }
 
         private static void DeleteStudent()
