@@ -15,9 +15,9 @@ namespace Week2
             ////String builder demo
 
             ////Create a string builder
-            Console.WriteLine("Creating string builder");
+            //Console.WriteLine("Creating string builder");
 
-            StringBuilder sb = new StringBuilder();
+            //StringBuilder sb = new StringBuilder();
 
             //sb.Append("HelloWorld ");// Appends a string without a new line character
             //sb.AppendLine("Hello World with new line character"); //Appends a string with a new line, i.e typing somthing and pressing enter
@@ -110,9 +110,113 @@ namespace Week2
 
             // Tuples - Tuples are groups of 2 or 3 data values that you can put in a variable
 
-            Tuple<int, string> t1 = new Tuple<int, string>(1, "Joe");
+            //Tuple<int, string> t1 = new Tuple<int, string>(1, "Joe");
 
-            Console.WriteLine($"ID is {t1.Item1} and Name is {t1.Item2}");
+            //Console.WriteLine($"ID is {t1.Item1} and Name is {t1.Item2}");
+
+            //Declare multiple ints
+
+            //int a, b, c, d, e, f;//6 ints
+                                 //Same as
+                                 //int a;//Declarationn
+                                 //int b;
+                                 //int c;
+                                 //int d;
+                                 //int e;
+                                 //int f;
+                                 //You can assign all of these on one statement, but can only assign a single variable
+
+            //a = b = c = d = e = f = 1;//6 ints all equal 1
+                                      //Same as
+                                      //int a = 1; //Asignment
+                                      //int b = 1;
+                                      //int c = 1;
+                                      //int d = 1;
+                                      //int e = 1;
+                                      //int f = 1;
+                                      //However, if the 6 ints need to be seperate values, then this must be done on seperate statements
+            int g = 1;
+            int h = 2;
+            int i = 3;
+            int j = 4;
+            int k = 5;
+            int l = 6;
+
+            //Operators
+            //Addition
+            double a = 7;
+            double b = 1.5;
+            double c = a + b;//we are adding the 7 in a with the 1.5 in b --> 7
+
+            a += 2.5; // this is the same as doing a a=a + 2.5. We are adding 2.5 to the value currently in a, which is 7 --> 7 + 2.5 = 9.5
+                      // We then replace the value of 7 in a with the new 9.5 value we got from adding, and replace it by assigning it
+
+            // Subtraction
+            // a and b are already declared above, but we will reset them to 7 and 1.5 by assigning these back to a and b
+
+            a = 7;
+            b = 1.5;
+
+            // c is also declared above so we will just do the subtraction without declaring c again
+
+            c = a - b; // We are subtracting b (1.5) from a (7) --> - 1.5 = 5.5 is then being assigned to c
+
+            a -= 2.5; // this is the same as a = a - 2.5. We are subtracting  
+
+            //Multiplication
+
+            // We are changing the values of a and b to 7 and 3 respectfully
+            a = 7;
+            b = 3;
+
+            c = a * b;//We are multiplying a (7) by b(3) --> 7 * 3 = 21
+                      // 21 is the being assigned back to c (c=21)
+
+            a *= 3;//This is the same as a = a * 3. We are multiplying a (7) times 3 --> 7 * 3 = 21
+                   //We are then replacing the old value of a (7) by assigning the new computed value of 21 back to a (a = 21)
+
+            // Division 
+
+            // We will assign the values of a and b to 7 and 2 respectively
+
+            a = 7;
+            b = 2;
+            c = a / b; // We will then divide a and b and assign the result to c 7/2 = 3
+                       //Since a and b are both ints, c will also be an int and so will be a whole #
+                       // 7/2 is supposed to be 3.5, but it does not round up to 4. The int is whatever
+                       //The whole number portion of the result would be, in this case with 3.5, it will be 3
+                       //To get the appropriate result of 3.5 when when dividing 7 by 2, one or both of a or b must be a double
+                       // i.e int a = 7 double a = 7; int b = 2 OR double a = 7; double b = 2
+                       //Modulus
+                       //The Modulus operator (%) will give the remainder of a division operation
+                       // i.e 7 % 2 = 1 because dividing 7 by 2, we would have 3 remainder 1. (long division)
+
+
+            //Modulus demo
+
+            // We can use modulus to determine even or odd numbers
+            //If a number is even, it has a modulus of 0 because dividing an even number by 2 always results in a remainder of 0
+            // If a number is odd, it has a modulus of 1 because diving an odd number by 2 will always results in a remainder of 1
+
+            //bool isEven = false;
+            //bool isOdd = false;//Set isEven and isOdd to false by default because modulus should prove a number to be odd or even
+            //                   // Proving the odd or even with the modulus check would then make it true
+
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            foreach (int number in numbers)
+            {
+                if (number % 2 == 0)// If the number divided by 2 results in remainder 0, the number is even
+                {
+                    Console.WriteLine($"The number {number} is even");
+                }
+                else //If the number divided by 2 is not 0, it is odd. The modulus of a number and 2 can only be 0 or 1
+                {
+                    Console.WriteLine($"The number {number} is odd";
+                }
+            }
+
+            
 
 
             Console.Read();//Leave console window open
