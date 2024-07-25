@@ -202,21 +202,40 @@ namespace Week2
             //bool isOdd = false;//Set isEven and isOdd to false by default because modulus should prove a number to be odd or even
             //                   // Proving the odd or even with the modulus check would then make it true
 
-            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            foreach (int number in numbers)
-            {
-                if (number % 2 == 0)// If the number divided by 2 results in remainder 0, the number is even
-                {
-                    Console.WriteLine($"The number {number} is even");
-                }
-                else //If the number divided by 2 is not 0, it is odd. The modulus of a number and 2 can only be 0 or 1
-                {
-                    Console.WriteLine($"The number {number} is odd";
-                }
-            }
+            //foreach (int number in numbers)
+            //{
+            //    if (number % 2 == 0)// If the number divided by 2 results in remainder 0, the number is even
+            //    {
+            //        Console.WriteLine($"The number {number} is even");
+            //    }
+            //    else //If the number divided by 2 is not 0, it is odd. The modulus of a number and 2 can only be 0 or 1
+            //    {
+            //        Console.WriteLine($"The number {number} is odd";
+            //    }
+            //}
 
-            
+            //Increment operator
+
+            // ++ as a suffix means the number is incremented after the operation on that line
+
+            a = 5;
+
+            Console.WriteLine($"Suffix a: {a} and b: {a++}");//a and b are both here becaause in b, a is being printed before it is incremented
+
+            a = 5;//Reset a to 5 for prefix demo
+
+            Console.WriteLine($"Prefix a: {a} and b: {++a}");//On prefix, a will be 5 and b will be 6 because with the ++ before the a, it will increment first then print
+
+            //int t = 1;// 32 bit value
+            //long v = 1;// 64 bit value
+
+            //Type casting
+
+            char lowerA = '/';
+            var intLowerA = (int)lowerA;
+            Console.WriteLine(intLowerA);
 
 
             Console.Read();//Leave console window open
