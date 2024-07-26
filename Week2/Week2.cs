@@ -233,9 +233,11 @@ namespace Week2
 
             //Type casting
 
-            char lowerA = '/';
-            var intLowerA = (int)lowerA;
-            Console.WriteLine(intLowerA);
+            //char lowerA = '/';
+            //var intLowerA = (int)lowerA;
+            //Console.WriteLine(intLowerA);
+
+            
 
 
             Console.Read();//Leave console window open
