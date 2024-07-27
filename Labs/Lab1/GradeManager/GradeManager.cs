@@ -204,19 +204,19 @@ namespace GradeManager
             var studentsJson = JsonConvert.SerializeObject(students, Formatting.Indented);
 
             //Write the JSON string to a file
-            var path = "C:\\Users\\hfofa\\Documents\\grademanagerstudent.json"; //Double \\ to escape \ for character in string
-            File.AppendAllText(path, studentsJson);
-            Console.WriteLine($"\nStudens saved to {path}");
+            
+            File.AppendAllText(studentsJsonPath, studentsJson);
+            log.AppendLine($"\nStudens saved to {studentsJsonPath}");
         }
 
         private static void LoadStudents()
         {
             //List<Student> students = null; // Create empty student list to load from file
             var path = "C:\\Users\\hfofa\\Documents\\grademanagerstudent.json"; // File path
-            var json = File.ReadAllText(path); // Load JSON text from file
+            var json = File.ReadAllText(studentsJsonPath); // Load JSON text from file
             students = JsonConvert.DeserializeObject<List<Student>>(json); // Convert JSON text back to object
             //return students; // Sent student list back out to main application.
-            Console.WriteLine($"\nStudens loaded from file: {path}");
+            log.AppendLine($"\nStudens loaded from file: {studentsJsonPath}");
         }
 
         private static void PrintStudentGrades()
@@ -514,6 +514,12 @@ namespace GradeManager
 
         private static void Exit()
         {
+            Console.Write("Do you want to save student data to file? (Y/N)");
+            var choice = Console.ReadLine().Trim();
+            if (choice.ToUpper() == "Y")
+            {
+                SaveStudents();
+            }
             Console.WriteLine("Good Bye!");
             exit = true; //Set exit to true so application will exit.
         }
