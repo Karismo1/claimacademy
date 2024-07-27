@@ -16,7 +16,18 @@ namespace Week2
 
             ////Create a string builder
             //Console.WriteLine("Creating string builder");
+            StringBuilder crew = new StringBuilder("Straw,", 50);//Start a StringBuilder with string "straw" and a starting capacity
+                                                                 //of 50 characters.
+            crew.Append(new char[] { 'h', 'a', 't' });//example 1
+            //crew.Append("hat");//Example 2
+            //Example 1 and 2 are two ways to do the same thing, as a char array is the same as a string
+            crew.AppendFormat("hat {0}", "crew"); //Appends by argument "crew" is appended to that
+            Console.WriteLine("there are {0} chars in {1}", crew.Length, crew.ToString());//Another way of doing string interpolation, by parameter
+            crew.Insert(0, "The");//Inserts string "The" at the beginning of the string (position 0).
+            crew.Replace("The", "Yonko Empire"); //Replace each instances of the string "The" with the string "yonko empire"
+            Console.WriteLine("The string is now {0} characters and is currently \"{1}\"", crew.Length, crew.ToString());
 
+            //crew.Append("Hello World"); // Appends to a string without new line character
             //StringBuilder sb = new StringBuilder();
 
             //sb.Append("HelloWorld ");// Appends a string without a new line character
