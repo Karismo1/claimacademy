@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GradeManager
+namespace GradeManagerWin
 {
     public class Student
     {
@@ -54,3 +54,4 @@ namespace GradeManager
     }
 
 }
+
